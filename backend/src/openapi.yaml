@@ -1,0 +1,667 @@
+openapi: 3.0.3
+info:
+  title: 2Step Shop - OpenAPI 3.0
+  description: "2Step 쇼핑몰 서버입니다"
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:3000/api/v1
+    description: 개발 서버(api/v1)
+tags:
+  - name: auth
+    description: 회원가입/로그인/사용자탈퇴
+  - name: me
+    description: 사용자 정보 조회/ 수정
+  - name: category
+    description: 카테고리
+  - name: product
+    description: 상품
+paths:
+  /auth/sign-up:
+    post:
+      tags:
+        - auth
+      summary: 회원가입
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                confirmedPassword:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                address:
+                  type: object
+                  properties:
+                    street:
+                      type: string
+                    detailedAddress:
+                      type: string
+                    postalCode:
+                      type: string
+      responses:
+        "200":
+          description: 회원가입 성공
+        "400":
+          description: 정보 입력 안한 경우
+  /auth/sign-in:
+    post:
+      tags:
+        - auth
+      summary: 로그인 ( email and password )
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "201":
+          description: 로그인 성공
+        "400":
+          description: 정보 입력 안한 경우
+  /auth/withdraw:
+    post:
+      tags:
+        - auth
+      summary: 사용자 탈퇴
+      description: 사용자 정보 탈퇴
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: 탈퇴 성공
+        "401":
+          description: 접근 권한이 없습니다
+        "403":
+          description: 권한 인증 실패
+        "404":
+          description: 페이지를 찾을 수 없습니다.
+  /me:
+    get:
+      tags:
+        - me
+      summary: 사용자 정보 가져오기
+      description: 사용자 정보 가져오기
+      operationId: getMe
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/User"
+                  error:
+                    type: string
+                    nullable: true
+        "401":
+          description: 접근 권한이 없습니다
+        "403":
+          description: 권한 인증 실패
+    put:
+      tags:
+        - me
+      summary: 사용자 정보 수정
+      description: 사용자 정보 수정
+      operationId: updateMe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                address:
+                  type: object
+                  properties:
+                    street:
+                      type: string
+                    detailedAddress:
+                      type: string
+                    postalCode:
+                      type: string
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/User"
+                  error:
+                    type: string
+                    nullable: true
+        "400":
+          description: 정보 입력 안한 경우
+        "401":
+          description: 접근 권한이 없습니다
+        "403":
+          description: 권한 인증 실패
+  /admin/auth/sign-up:
+    post:
+      tags:
+        - auth
+      summary: 회원가입
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                confirmedPassword:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                address:
+                  type: object
+                  properties:
+                    street:
+                      type: string
+                    detailedAddress:
+                      type: string
+                    postalCode:
+                      type: string
+      responses:
+        "200":
+          description: 회원가입 성공
+        "400":
+          description: 정보 입력 안한 경우
+        "401":
+          description: 접근 권한이 없습니다
+        "403":
+          description: 권한 인증 실패
+  /admin/auth/sign-in:
+    post:
+      tags:
+        - auth
+      summary: 로그인 ( email and password )
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "201":
+          description: 로그인 성공
+        "400":
+          description: 정보 입력 안한 경우
+        "401":
+          description: 접근 권한이 없습니다
+        "403":
+          description: 권한 인증 실패
+  /categories:
+    get:
+      tags:
+        - category
+      summary: 모든 카테고리 가져오기
+      description: 모든 카테고리 가져오기
+      operationId: getCategory
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Category"
+                  error:
+                    type: string
+                    nullable: true
+    post:
+      tags:
+        - category
+      summary: 카테고리 등록
+      description: 카테고리 등록
+      operationId: postCategory
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  required:
+                    - name
+      responses:
+        "201":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Category"
+                  error:
+                    type: string
+                    nullable: true
+        "400":
+          description: 카테고리명이 없는 경우
+        "401":
+          description: 로그인 인증 실패
+        "403":
+          description: 권리자 권한 인증 실패
+  /categories/{categoryId}:
+    put:
+      tags:
+        - category
+      summary: 카테고리 수정
+      description: 카테고리글 ID로 카테고리 내용 수정
+      operationId: updateCategory
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: categoryId
+          in: path
+          description: 카테고리 ID
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  required:
+                    - name
+        required: true
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Category"
+                  error:
+                    type: string
+                    nullable: true
+        "400":
+          description: 카테고리명이 없는 경우
+        "401":
+          description: 로그인 인증 실패
+        "403":
+          description: 권리자 권한 인증 실패
+    delete:
+      tags:
+        - category
+      summary: 카테고리 삭제
+      description: 카테고리 ID로 카테고리 삭제
+      operationId: deleteCategory
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: categoryId
+          in: path
+          description: 카테고리 ID
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: 성공
+        "401":
+          description: 로그인 인증 실패
+        "403":
+          description: 권리자 인증 실패
+        "404":
+          description: 해당 카테고리가 존재하지 않는 경우
+  /products:
+    get:
+      tags:
+        - product
+      summary: 카테고리 ID에 따른 모든 상품 가져오기
+      description: 모든 상품 가져오기
+      operationId: getProductAll
+      parameters:
+        - name: categoryId
+          in: query
+          description: 가져올 제품의 카테고리 ID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                  error:
+                    type: string
+                    nullable: true
+    post:
+      tags:
+        - product
+      summary: 상품 등록
+      description: 상품 등록
+      operationId: postProduct
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                discountRate:
+                  type: number
+                description:
+                  type: string
+                company:
+                  type: string
+                imgUrl:
+                  type: string
+                category:
+                  type: string
+                  required:
+                    - name
+                    - price
+                    - discountRate
+                    - description
+                    - company
+                    - imgUrl
+                    - category
+
+      responses:
+        "201":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Product"
+                  error:
+                    type: string
+                    nullable: true
+        "400":
+          description: 상품 정보 없는 경우
+        "401":
+          description: 로그인 안한 경우
+        "403":
+          description: 권리자 권한 없는 경우
+  /products/{productId}:
+    get:
+      tags:
+        - product
+      summary: 상품 가져오기
+      description: 상품 가져오기
+      operationId: getProduct
+      parameters:
+        - name: productId
+          in: path
+          description: 상품 ID
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                  error:
+                    type: string
+                    nullable: true
+    put:
+      tags:
+        - product
+      summary: 상품 수정
+      description: 상품 ID로 상품 내용 수정
+      operationId: updateProduct
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: productId
+          in: path
+          description: 상품 ID
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                discountRate:
+                  type: number
+                description:
+                  type: string
+                company:
+                  type: string
+                imgUrl:
+                  type: string
+                category:
+                  type: string
+                  required:
+                    - name
+                    - price
+                    - discountRate
+                    - description
+                    - company
+                    - imgUrl
+                    - category
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Product"
+                  error:
+                    type: string
+                    nullable: true
+        "400":
+          description: 카테고리명이 없는 경우
+        "401":
+          description: 로그인 인증 실패
+        "403":
+          description: 권리자 권한 인증 실패
+    delete:
+      tags:
+        - product
+      summary: 상품 삭제
+      description: 상품 ID로 상품 삭제
+      operationId: deleteProduct
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: productId
+          in: path
+          description: 상품 ID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 성공
+        "401":
+          description: 로그인 인증 실패
+        "403":
+          description: 권리자 권한 인증 실패
+        "404":
+          description: 해당 카테고리가 존재하지 않는 경우
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Category:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: number
+          example: 카테고리 ID
+        name:
+          type: string
+          example: 카테고리 이름
+    Product:
+      type: object
+      required:
+        - id
+        - name
+        - price
+        - discountRate
+        - description
+        - company
+        - imgUrl
+        - category
+      properties:
+        id:
+          type: number
+          example: 상품 ID
+        name:
+          type: string
+          example: 상품 이름
+        price:
+          type: number
+          example: 상품 가격
+        discountRate:
+          type: number
+          example: 상품 할인율
+        description:
+          type: string
+          example: 상품 상세 설명
+        company:
+          type: string
+          example: 상품 제조사
+        imgUrl:
+          type: string
+          example: 상품 이미지
+        category:
+          type: string
+          example: 상품이 속한 카테고리
+    User:
+      type: object
+      required:
+        - id
+        - email
+        - password
+        - fullName
+        - isAdmin
+        - address
+      properties:
+        id:
+          type: number
+          example: 사용자 ID
+        email:
+          type: string
+          example: 사용자 email
+        password:
+          type: string
+          example: 사용자 가격
+        fullName:
+          type: string
+          example: 사용자 할인율
+        isAdmin:
+          type: boolean
+          default: false
+          example: 사용자 권한(구매자/관리자자)
+        address:
+          type: object
+          properties:
+            street:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            country:
+              type: string
+            postalCode:
+              type: string
+          required:
+            - street
+            - city
+            - state
+            - country
+            - postalCode
