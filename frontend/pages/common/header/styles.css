@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+}
+a {
+  cursor: pointer;
+}
+
+header {
+  background-color: white;
+  color: black;
+  width: 1216px;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+header .container-box {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+header .logo {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+header .logo img {
+  width: 250px;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+header nav ul li {
+  float: left;
+  margin-right: 20px;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+header .list-container nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+header .menu a,
+header .user-menu a {
+  color: black;
+  font-weight: bold;
+}

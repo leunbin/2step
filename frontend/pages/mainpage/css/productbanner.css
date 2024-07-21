@@ -1,0 +1,108 @@
+.productBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 180px;
+}
+
+.productBanner .popular-text {
+  text-align: center;
+}
+
+.productBanner .popular-product ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 1216px;
+  height: 632px;
+}
+
+.productBanner .popular-product li {
+  margin-right: 30px;
+  width: 25%;
+}
+
+.productBanner .popular-product .put-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.productBanner .popular-product .put-product .button {
+  padding: 25px 0;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.productBanner .popular-product .put-product img {
+  width: 100%;
+  border-radius: 10px;
+  height: 360px;
+  margin-bottom: 10px;
+  border: 1px solid #d9d9d9;
+}
+
+.productBanner .popular-product .put-product-information {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+/* 텍스트 크기 및 색깔 */
+
+.productBanner .popular-text .title-class {
+  color: #000000;
+  font-size: 32px;
+  font-weight: 550;
+  margin-bottom: 3px;
+}
+
+.productBanner .popular-text .subtitle-class {
+  color: #8f8989;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.productBanner .popular-product .put-product-information .product-name {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+}
+.productBanner .popular-product .put-product-information .product-category {
+  color: #8f8989;
+  font-size: 20px;
+  font-weight: 500;
+}
+.productBanner .popular-product .put-product-information .product-price {
+  color: #d9d9d9;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+.productBanner .popular-product .put-product-information .product-discount {
+  color: #ff0000;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.productBanner
+  .popular-product
+  .put-product-information
+  .product-discountPrice {
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 8px;
+}
+
+.productBanner
+  .popular-product
+  .put-product-information
+  .nodiscount-product-price {
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 30px;
+}

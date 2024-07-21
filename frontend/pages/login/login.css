@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+input[type="email"],
+input[type="password"],
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 4px 0;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #6242ff;
+}
+
+.login-btn {
+  background-color: #2b3bd0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.signup-btn {
+  background-color: white;
+  color: #2b3bd0;
+  border: 1px solid #2b3bd0;
+  cursor: pointer;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.adminlogin-link {
+  margin-top: 5px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  text-align: center;
+  font-size: 10px;
+}

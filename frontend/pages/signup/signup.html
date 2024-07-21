@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./signup.css" />
+    <title>SIGN UP</title>
+  </head>
+  <body>
+    <div class="signup-form">
+      <h1>SIGN UP</h1>
+
+      <form class="signup-form-wrap">
+        <input type="email" id="email" placeholder="이메일" />
+        <input type="password" id="password" placeholder="비밀번호" />
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="비밀번호 확인"
+        />
+        <div class="name-wrap">
+          <p class="label">이름 *</p>
+          <input type="text" id="last-name" placeholder="성" />
+          <input type="text" id="first-name" placeholder="이름" />
+        </div>
+        <div class="address-wrap">
+          <p class="label">주소 *</p>
+          <div class="zipcode-container">
+            <input
+              type="text"
+              name="postalCode"
+              maxlength="5"
+              placeholder="우편번호"
+              readonly
+            />
+            <button type="button">우편번호찾기</button>
+          </div>
+          <input type="text" name="street" placeholder="주소" readonly />
+          <input type="text" name="detailedAddress" placeholder="상세주소" />
+        </div>
+        <button type="submit" class="signup-btn">가입하기</button>
+      </form>
+    </div>
+    <div id="error-messages"></div>
+  </body>
+  <script type="module" src="./postcode.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script type="module" src="./showerror.js"></script>
+</html>

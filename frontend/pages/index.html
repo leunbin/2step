@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./common/footer/styles.css" as="style" />
+    <link rel="stylesheet" href="./common/header/styles.css" as="style" />
+
+    <!-- bulma CSS 참조  -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./mainpage/css/banner.css" />
+    <link rel="stylesheet" href="./mainpage/css/productbanner.css" />
+
+    <title>스포츠 신발 하면?? 2STEP!</title>
+  </head>
+  <body>
+    <header id="header"></header>
+
+    <main>
+      <section class="topBanner">
+        <div class="slider">
+          <img id="bannerImage" src="" alt="신발" />
+        </div>
+      </section>
+
+      <section id="productBanner1" class="productBanner">
+        <div class="popular-text"></div>
+        <div class="popular-product">
+          <ul></ul>
+        </div>
+      </section>
+
+      <section id="productBanner2" class="productBanner">
+        <div class="popular-text"></div>
+        <div class="popular-product">
+          <ul></ul>
+        </div>
+      </section>
+
+      <section class="eventBanner">
+        <div class="banner">
+          <img id="eventBannerImage" src="" alt="이벤트 배너" />
+        </div>
+      </section>
+
+      <section id="productBanner3" class="productBanner">
+        <div class="popular-text"></div>
+        <div class="popular-product">
+          <ul></ul>
+        </div>
+      </section>
+
+      <section class="weeklyBestBanner">
+        <div class="banner">
+          <a href="#">
+            <img id="weeklyBestBannerImage" src="" alt="주말 베스트 배너" />
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer"></footer>
+  </body>
+  <!-- 배너 레이아웃 -->
+  <script type="module" src="./mainpage/js/imageslide.js"></script>
+  <!-- 인기 상품 레이아웃 -->
+  <script type="module" src="./mainpage/js/productbanner.js"></script>
+  <!-- 헤더, 풋터-->
+  <script type="module" src="./common/common.js"></script>
+</html>

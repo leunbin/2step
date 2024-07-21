@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+/*비밀번호 재확인 확인 버튼*/
+.check-button {
+  background-color: #2b3bd0;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.check-button:hover {
+  background-color: #2b3bd0;
+}
+
+/*개인정보수정 폼*/
+.profile-form {
+  margin-bottom: 20px;
+}
+
+.profile-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.profile-form input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.email-password-form {
+  width: 50%;
+  padding: 30px 200px;
+}
+
+.check-button {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  margin-left: 170px;
+}
+
+/*우편번호찾기*/
+.zipcode-container {
+  display: flex;
+  align-items: center;
+}
+
+.zipcode-container > button {
+  background-color: white;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 4px;
+  padding: 8px 22px;
+  flex-basis: 30%;
+}
+
+.zipcode-container > button:hover {
+  border: 1px solid #6242ff;
+}
+
+/*개인정보입력*/
+input[type="email"],
+input[type="password"],
+input[type="text"],
+.signout-button,
+.edit-profile-button,
+.check-button {
+  width: 100%;
+  padding: 10px;
+  margin: 4px 0;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #6242ff;
+}
+.signout-button,
+.edit-profile-button {
+  cursor: pointer;
+}

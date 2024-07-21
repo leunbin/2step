@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pay</title>
+    <link rel="stylesheet" href="pay.css" />
+  </head>
+  <body>
+    <form action="결제처리_주소" method="POST">
+      <h1>결제하기</h1>
+      <div class="container">
+        <div class="buyer">
+          <div class="buyer-information">
+            <h2>구매자 정보</h2>
+            <hr />
+            <input
+              type="text"
+              class="buyer-name"
+              name="buyer-name"
+              placeholder="이름"
+              required
+            />
+
+            <input
+              type="tel"
+              class="buyer-phone"
+              name="buyer-phone"
+              placeholder="전화번호"
+              required
+            />
+
+            <input
+              type="email"
+              class="buyer-email"
+              name="buyer-email"
+              placeholder="이메일"
+              required
+            />
+          </div>
+          <div class="shipping-information">
+            <h2>배송지 정보</h2>
+            <hr />
+            <input
+              type="text"
+              class="shipping-name"
+              name="shipping-name"
+              placeholder="이름"
+              required
+            />
+
+            <input
+              type="tel"
+              class="shipping-phone"
+              name="shipping-phone"
+              placeholder="전화번호"
+              required
+            />
+
+            <input
+              type="text"
+              class="shipping-zipcode"
+              name="shipping-zipcode"
+              placeholder="우편번호"
+              required
+            />
+
+            <button type="button" class="zipcode-search">우편번호 검색</button>
+
+            <input
+              type="text"
+              class="shipping-address"
+              name="shipping-address"
+              placeholder="주소"
+              required
+            />
+            <input
+              type="text"
+              class="detailedAddress"
+              name="detailedAddress"
+              placeholder="상세주소"
+              required
+            />
+          </div>
+          <div class="payment-method">
+            <h2>결제 수단 선택</h2>
+            <hr />
+            <input
+              type="checkbox"
+              class="credit-card"
+              name="payment-method"
+              value="credit-card"
+            />
+            <label for="credit-card">신용카드</label>
+          </div>
+        </div>
+        <div class="payment">
+          <div class="amount">
+            <p>총 상품 금액: <span class="total-price">0원</span></p>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button type="button" class="back-button">장바구니 돌아가기</button>
+    <button class="order">결제하기</button>
+  </body>
+  <script type="module" src="postcode.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script type="module" src="payment.js"></script>
+  <script type="module" src="button.js"></script>
+</html>

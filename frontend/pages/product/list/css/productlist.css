@@ -1,0 +1,77 @@
+.productList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.productList .category .title-class {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+.productList .product {
+  width: 1216px;
+  height: auto;
+}
+
+.productList .product ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-left: 7%;
+}
+
+.productList .product li {
+  margin-right: 45px;
+  margin-bottom: 100px;
+  width: 25%;
+  list-style-type: none;
+}
+
+.productList .product ul li img {
+  width: 100%;
+  border-radius: 10px;
+  height: 360px;
+  margin-bottom: 10px;
+  border: 1px solid #d9d9d9;
+}
+
+.product .product-information .product-name {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+}
+.product .product-information .product-category {
+  color: #8f8989;
+  font-size: 20px;
+  font-weight: 500;
+}
+.product .product-information .product-price {
+  color: #d9d9d9;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+.product .product-information .product-discount {
+  color: #ff0000;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product .product-information .product-discountPrice {
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 8px;
+}
+.product .product-information .nodiscount-product-price {
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 23.59px;
+}

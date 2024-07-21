@@ -1,0 +1,100 @@
+.product-container {
+  display: flex;
+  justify-content: center;
+}
+.product-container .product-show {
+  width: 1216px;
+  min-width: 1216px;
+  height: 702px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.product-container .product-show .image-container {
+  height: 100%;
+  width: 616px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-container .product-show .image-container img {
+  height: 600px;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+}
+
+.product-container .product-show .image-container .pages {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.product-container .product-show .image-container .pages span {
+  font-size: 15px;
+  text-align: center;
+  border: solid 1px #8f8989;
+  background-color: #8f8989;
+  margin-right: 20px;
+  padding: 0px 10px 0px 10px;
+  border-radius: 25px;
+  color: #d9d9d9;
+}
+
+.product-container .product-show .product-information {
+  height: 100%;
+  width: 40%;
+}
+
+.product-container .product-show .product-information .product-name {
+  color: #000000;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+.product-container .product-show .product-information .product-category {
+  color: #8f8989;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+.product-container .product-show .product-information .product-price {
+  color: #d9d9d9;
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+.product-container .product-show .product-information .product-discount {
+  color: #ff0000;
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product-container .product-show .product-information .product-discountPrice {
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 8px;
+}
+
+.product-container
+  .product-show
+  .product-information
+  .nodiscount-product-price {
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 30px;
+}
+.product-container .product-show .product-information .product-company {
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+}

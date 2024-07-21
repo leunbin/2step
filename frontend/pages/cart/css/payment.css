@@ -1,0 +1,60 @@
+form .payment-container {
+  width: 1216px;
+  margin-top: 100px;
+}
+
+form .payment-container .payment {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.payment .total-price,
+.payment .total-discount,
+.payment .total-payment {
+  display: flex;
+  width: 33.333%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  border-bottom: solid 3px #8f8989;
+  border-top: solid 4px black;
+}
+
+.payment .total-discount {
+  border-left: solid 3px #8f8989;
+  border-right: solid 3px #8f8989;
+}
+
+.payment .payment-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.payment .payment-price {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.payment .total-payment .payment-price:last-child {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.order {
+  display: flex;
+  justify-content: center;
+}
+.order-button {
+  background-color: #2b3bd0;
+  color: #ffffff;
+  width: 220px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 80px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.order-button:hover {
+  background-color: darkblue;
+}

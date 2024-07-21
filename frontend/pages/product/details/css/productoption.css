@@ -1,0 +1,26 @@
+.product-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-options form {
+  margin-bottom: 20px;
+}
+
+.product-options button {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.cart-button {
+  background-color: #f8c291;
+  border: none;
+}
+
+.purchase-button {
+  background-color: #6a89cc;
+  border: none;
+  color: white;
+}

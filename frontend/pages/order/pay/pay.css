@@ -1,0 +1,97 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  max-width: 1216px;
+}
+
+.container {
+  width: 100%
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  padding: 10px;
+  margin: 4px 0;
+  border: 1px solid #D9D9D9;
+  box-sizing: border-box; 
+  border-radius : 8px;
+}
+
+input[class="buyer-name"],
+input[class="shipping-name"],
+input[type="tel"] {
+  width: calc(50% - 3px);
+}
+
+input[class="buyer-email"],
+input[class="shipping-address"],
+input[class="detailedAddress"] {
+  width: calc(100% - 3px);
+}
+
+.shipping-zipcode {
+  width: 40%
+}
+
+.zipcode-search {
+  width: 20%
+}
+
+.zipcode-search > button {
+  background-color: #2B3BD0;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 4px;
+  padding: 8px 22px;
+  flex-basis: 30%;
+}
+
+button {
+  background-color: #2B3BD0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+.total-price {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.amount {
+  text-align: right;
+}
+
+.back-button {
+  background-color: white;
+  color: blue;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid blue;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.back-button:hover {
+  background-color: #444;
+}
