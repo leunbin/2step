@@ -55,6 +55,7 @@ function productShow(product) {
   }</p>
         ${createDiscountSection(product)}
         <p class='product-company'>제조사: ${product.company}</p>
+        <p class='product-description'> ${product.description}</p>
         
         <div class="product-options">
           <form>

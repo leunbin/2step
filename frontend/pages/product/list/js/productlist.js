@@ -58,6 +58,8 @@ function createProductSection(product) {
 
 function productDivide(category) {
   const productList = document.querySelector(".product ul");
+  console.log(`category: ${category}`);
+  console.log(`product: ${PRODUCT_DATA}`);
 
   PRODUCT_DATA.data.forEach((product) => {
     if (product.category === category || product.state === category) {

@@ -45,7 +45,7 @@ async function signup(e) {
   try {
     const data = { email, password, lastName, firstName, address };
     const response = await fetch(
-      "http://kdt-sw-8-team02.elicecoding.com/api/v1/auth/sign-up",
+      "http://localhost:3000/api/v1/auth/sign-up",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

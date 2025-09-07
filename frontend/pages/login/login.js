@@ -26,7 +26,7 @@ async function handleLogin() {
   try {
     const data = { email, password };
     const response = await fetch(
-      "http://kdt-sw-8-team02.elicecoding.com/api/v1/auth/sign-in",
+      "http://localhost:3000/api/v1/auth/sign-in",
       {
         method: "POST",
         headers: {

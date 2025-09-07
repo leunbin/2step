@@ -12,7 +12,7 @@ const reOrder = async (orderData, newTotalPrice) => {
   console.log(orderData.orderNumber);
   try {
     const response = await fetch(
-      `http://kdt-sw-8-team02.elicecoding.com/api/v1/orders/${orderData.orderNumber}`,
+      `http://localhost:3000/api/v1/orders/${orderData.orderNumber}`,
       {
         method: "PUT",
         headers: {

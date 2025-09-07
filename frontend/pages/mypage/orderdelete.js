@@ -2,7 +2,7 @@ const orderDelete = async (orderNumber) => {
   try {
     const token = localStorage.getItem("token");
     const res = await fetch(
-      `http://kdt-sw-8-team02.elicecoding.com/api/v1/orders/${orderNumber}`,
+      `http://localhost:3000/api/v1/orders/${orderNumber}`,
       {
         method: "DELETE",
         headers: {

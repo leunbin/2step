@@ -25,7 +25,7 @@ async function updateProfile() {
     console.log(data);
     const token = localStorage.getItem("token");
     const res = await fetch(
-      "http://kdt-sw-8-team02.elicecoding.com/api/v1/me",
+      "http://localhost:3000/api/v1/me",
       {
         method: "PUT",
         headers: {

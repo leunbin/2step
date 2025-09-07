@@ -6,7 +6,7 @@ async function deleteAccount() {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      "http://kdt-sw-8-team02.elicecoding.com/api/v1/auth/withdraw",
+      "http://localhost:3000/api/v1/auth/withdraw",
       {
         method: "POST",
         headers: {
