@@ -1,4 +1,32 @@
 ![demo example](img/2step_demo_2x.gif)
+## 0. Quick Start
+### 0.1 공통
+```bash
+git clone https://github.com/leunbin/2step.git
+cd 2step
+```
+### 0.2 Backend
+``` bash
+cd ../backend
+npm install
+npm start
+```
+**Environment Variables**
+>프로젝트를 실행하기 위해 아래 환경 변수를 `.env` 파일에 설정해야합니다. <BR>
+>(각 값을 실제 환경에 맞게 설정해주세요.)
+
+- `NODE_ENV` : 실행 환경 (`development` / `production`)  
+- `APPLICATION_NAME` : 애플리케이션 이름  
+- `PORT` : 서버 포트 번호 (예: `3000`)  
+- `MONGODB_URI` : MongoDB 연결 문자열  
+- `JWT_SECRET` : JWT 토큰 서명 키  
+### 0.3 Frontend
+```bash
+cd ../frontend
+npm install
+npm run dev
+# 기본 URL : http://localhost:8080
+```
 ## 1. Project Overview
 - 트렌디한 운동화 판매를 위한 온라인 쇼핑몰 구현
 - 직관적이고 사용하기 쉬운 인터페이스를 제공
