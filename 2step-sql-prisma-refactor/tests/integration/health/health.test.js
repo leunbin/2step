@@ -1,0 +1,14 @@
+const request = require("supertest");
+
+let app;
+beforeAll(async () => {
+  app = await global.__APP__;
+});
+
+describe("Health Check", () => {
+  test("GET /health", async () => {
+    const res = await request(app).get("/health");
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({ ok: true });
+  });
+});
