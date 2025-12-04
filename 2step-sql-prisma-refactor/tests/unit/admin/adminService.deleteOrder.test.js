@@ -5,6 +5,9 @@ const orderService = require("../../../src/service/orderService");
 const productService = require("../../../src/service/productService");
 const { clearDatabase, prisma } = require("../../utils/testUtils")
 
+console.log('현재 DATABASE_URL:', process.env.DATABASE_URL);
+
+
 let productone_id;
 let producttwo_id;
 let user;

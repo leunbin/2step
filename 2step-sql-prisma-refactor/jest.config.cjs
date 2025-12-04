@@ -3,18 +3,21 @@ module.exports = {
     {
       displayName: "unit",
       testMatch: ["<rootDir>/tests/unit/**/*.test.js"],
-      setupFiles: ["<rootDir>/tests/setup/setupUnit.js"],
+      setupFilesAfterEnv: ["<rootDir>/tests/setup/jest.setup.js"],
       testEnvironment: "node"
     },
     {
       displayName: "integration",
       testMatch: ["<rootDir>/tests/integration/**/*.test.js"],
-
-      setupFiles: ["<rootDir>/tests/setup/setupIntegrationEnv.js"],
-
+      setupFilesAfterEnv: ["<rootDir>/tests/setup/jest.setup.js"],
       setupFilesAfterEnv: ["<rootDir>/tests/setup/setupIntegration.js"],
-
       testEnvironment: "node"
-    }
-  ]
+    },
+    {
+      displayName: "explain",
+      testMatch: ["<rootDir>/tests/explain/**/*.test.js"],
+      setupFilesAfterEnv: ["<rootDir>/tests/setup/jest.setup.js"],
+      testEnvironment: "node"
+    },
+  ],
 };

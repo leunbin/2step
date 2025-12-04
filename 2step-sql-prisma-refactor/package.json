@@ -6,9 +6,13 @@
   "scripts": {
     "dev": "prisma generate && nodemon bin/index.js",
     "start": "nodemon --watch 'bin/*' --watch 'src/*' bin/index.js ",
-    "test": "cross-env NODE_ENV=test jest --runInBand",
-    "test:unit": "cross-env NODE_ENV=test jest --selectProjects unit --runInBand",
-    "test:integration": "cross-env NODE_ENV=test jest --selectProjects integration --runInBand",
+    "migrate:mysql" : "npx prisma migrate dev --schema=prisma/mysql.schema.prisma",
+    "test:db:prepare" : "if exist tests\\generated\\sqlite (rmdir /s /q tests\\generated\\sqlite) && prisma generate --schema=prisma/sqlite.schema.prisma && cross-env DATABASE_URL=\"file:./test.db\" prisma db push --schema=prisma/sqlite.schema.prisma --force-reset --skip-generate",
+    "test": "npm run test:db:prepare && cross-env NODE_ENV=test jest --runInBand",
+    "test:unit": "npm run test:db:prepare && cross-env NODE_ENV=test jest --selectProjects unit --runInBand",
+    "test:integration": "npm run test:db:prepare && cross-env NODE_ENV=test jest --selectProjects integration --runInBand",
+    "test:explain": "npm run test:db:prepare && cross-env NODE_ENV=test jest --selectProjects explain --runInBand",
+    "test:coverage": "jest --coverage --runInBand --detectOpenHandles --forceExit",
     "lint": "eslint bin src",
     "format": "prettier --write ."
   },
@@ -25,6 +29,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.2",
     "morgan": "^1.10.1",
+    "mysql": "^2.18.1",
     "supertest": "^7.1.4",
     "swagger-ui-express": "^5.0.0",
     "yaml": "^2.3.2"

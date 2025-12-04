@@ -95,6 +95,8 @@ node_modules/
 jspm_packages/
 /prisma/dev.db      
 /prisma/test.db 
+tests/generated
+prisma/generated
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/

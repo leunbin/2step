@@ -1,5 +1,8 @@
 const prisma = require("../../src/prismaClient");
 
+console.log("Test Client Init URL:", process.env.DATABASE_URL);
+
+
 async function clearDatabase() {
   await prisma.orderItem.deleteMany();
   await prisma.customer.deleteMany();

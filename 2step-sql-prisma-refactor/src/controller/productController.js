@@ -1,5 +1,6 @@
 const { productService } = require("../service");
 const utils = require("../misc/utils");
+const { getProductsByCategory } = require("../service/productService");
 
 const productController = {
   async postProduct(req, res, next) {
@@ -26,7 +27,13 @@ const productController = {
 
   async getProducts(req, res, next) {
     try {
-      const options = req.query;
+      const { categoryId } = req.params;
+      const queryOptions = req.query;
+
+      const options = {
+        ...queryOptions,
+        categoryId: categoryId ? Number(categoryId) : undefined,
+      };
 
       const result = await productService.getproducts(options);
 

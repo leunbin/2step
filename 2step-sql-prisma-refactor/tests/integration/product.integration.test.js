@@ -49,9 +49,11 @@ describe('GET /api/products/:productId',() => {
   })
 
   test('상품 상세 조회 성공', async() => {
+    console.time('with-index')
     const res = await request(app)
       .get(`/api/products/${productId}`)
       .expect(201)
+    console.timeEnd('with-index')
 
     expect(res.body.data.id).toBe(productId);
   })
@@ -62,5 +64,41 @@ describe('GET /api/products/:productId',() => {
       .expect(404)
     
     expect(res.body.error.message).toBe('해당 상품이 없습니다.');
+  })
+})
+
+describe('GET /api/products/category/:categoryId', () => {
+  let categoryId;
+  
+  beforeEach(async() => {
+    const category = await insertCategory();
+    categoryId = category.id;
+
+    await insertProduct(categoryId);
+    await insertProduct(categoryId,{
+      name: "new product",
+      productCode: "new-code"
+    })
+    await insertProduct(categoryId,{
+      name: "new product2",
+      productCode: "new-code2"
+    })
+    await insertProduct(categoryId, {
+      name: "new product3",
+      productCode: "new-code3"
+    })
+  })
+
+  test('카테고리로 상품 조회 성공', async() => {
+    console.time("no-index");
+    const res = await request(app)
+      .get(`/api/products/category/${categoryId}`)
+      .expect(201)
+
+    console.timeEnd("no-index")
+    
+    res.body.data.forEach((item) => {
+      expect(item.categoryId).toBe(categoryId)
+    })
   })
 })

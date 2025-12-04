@@ -50,6 +50,7 @@ class ProductService {
 
   async getproduct(id) {
     const product = await productDAO.findById(prisma, id);
+    
     if(!product) {
       throw new AppError(
         commonErrors.resourceNotFoundError,
@@ -64,7 +65,7 @@ class ProductService {
     const products = await productDAO.findMany(prisma, options);
     return products;
   }
-
+  
   async updateProduct(productId, productData, optionsData) {    
     const oldProduct = await productDAO.findById(prisma, productId);
     

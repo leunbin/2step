@@ -52,11 +52,14 @@ describe('GET /api/orders', () => {
   })
   
   test("사용자의 주문 세부 정보 조회", async() => {
+    console.time("no-index");
     const res = await request(app)
       .get("/api/orders")
       .query({ orderId: orderId})
       .set("Authorization", `Bearer ${token}`)
       .expect(200);
+
+    console.timeEnd("no-index")
 
       expect(res.body.data).toHaveProperty("order");
       expect(res.body.data).toHaveProperty("orderItem");

@@ -1,6 +1,7 @@
 const request = require("supertest");
 
 let app;
+
 beforeAll(async () => {
   app = await global.__APP__;
 });

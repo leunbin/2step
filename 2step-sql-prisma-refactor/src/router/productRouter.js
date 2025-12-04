@@ -14,4 +14,10 @@ productRouter.get(
   productController.getProduct
 );
 
+// GET /api/products/category/:categoryId
+productRouter.get(
+  "/category/:categoryId",
+  productController.getProducts
+);
+
 module.exports = productRouter;

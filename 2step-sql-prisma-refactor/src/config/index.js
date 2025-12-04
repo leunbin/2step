@@ -13,7 +13,6 @@ if (envFound.error) {
   throw new AppError(commonErrors.configError, "Couldn't find .env file");
 }
 
-// mongoDB 연결을 위한 URI값이 있는 지 체크
 if (process.env.DATABASE_URL === undefined) {
   throw new AppError(
     commonErrors.configError,
@@ -33,7 +32,7 @@ module.exports = {
 
   port: parseInt(process.env.PORT ?? "3000", 10), // 어플리케이션이 바인딩되는 포트
 
-  mongoDBUri: process.env.DATABASE_URL, // mongoDB 연결 주소
+  DBUri: process.env.DATABASE_URL, // mongoDB 연결 주소
 
   jwtSecret: process.env.JWT_SECRET,
 
