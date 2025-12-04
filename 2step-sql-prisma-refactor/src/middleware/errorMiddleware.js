@@ -1,7 +1,7 @@
 const AppError =  require( '../misc/AppError');
 
 function errorMiddleware(err, req, res, next) {
-  const status = err instanceof AppError ? err.httpCode : 500;
+  const status = err instanceof AppError && Number.isInteger(err.httpCode) ? err.httpCode : 500;
   const message = err.message || 'Internal Server Error';
 
   if (err instanceof AppError && err.isOperational && status < 500) {
