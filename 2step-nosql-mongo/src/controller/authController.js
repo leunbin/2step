@@ -39,7 +39,9 @@ const authController = {
         plainPassword: password,
       });
       res.status(201).json(utils.buildResponse(token));
+      console.log("로그인 성공")
     } catch (error) {
+      console.log(error)
       next(error);
     }
   },

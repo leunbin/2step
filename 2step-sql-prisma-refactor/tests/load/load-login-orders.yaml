@@ -1,0 +1,25 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+
+scenarios:
+  - name: "Login + Get Orders"
+    flow:
+      - post:
+          url: "/api/auth/login"
+          headers:
+            Content-Type: "application/json"
+          json:
+            "email" : "loadtest@test.com"
+            "password" : "password1234"
+          capture:
+            - json: "$.data.token"
+              as: "token"
+      - get:
+          url: "/api/orders"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+

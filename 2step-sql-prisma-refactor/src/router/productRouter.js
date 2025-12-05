@@ -2,6 +2,12 @@ const express = require("express");
 const { productController } = require("../controller");
 const productRouter = express.Router();
 
+// GET /api/products/category/:categoryId
+productRouter.get(
+  "/category/:categoryId",
+  productController.getProducts
+);
+
 // GET /api/products
 productRouter.get(
   "/", 
@@ -14,10 +20,5 @@ productRouter.get(
   productController.getProduct
 );
 
-// GET /api/products/category/:categoryId
-productRouter.get(
-  "/category/:categoryId",
-  productController.getProducts
-);
 
 module.exports = productRouter;

@@ -1,0 +1,39 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 20
+      arrivalRate: 5
+    
+scenarios:
+  - name: "Create Order (Transaction Load)"
+    flow:
+      - post:
+          url: "/api/auth/login"
+          headers:
+            Content-Type: "application/json"
+          json:
+            "email" : "loadtest@test.com"
+            "password" : "password1234"
+          capture:
+            - json: "$.data.token"
+              as: "token"
+
+      - post:
+          url: "/api/orders"
+          headers:
+            Authorization: "Bearer {{ token }}"
+            Content-Type: "application/json"
+          json:
+            items:
+              - productId: 1
+                productOptionId: 15
+                quantity: 1
+            customer:
+              name: "Minju"
+              phone: "010-1234-5678"
+              email: "Minju@test.com"
+            delivery:
+              name: "Wonhee"
+              phone: "010-9873-2467"
+              postcode: "34562"
+              address: "서울특별시 성동구"

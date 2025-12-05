@@ -1,0 +1,35 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 20
+      arrivalRate: 3
+  defaults:
+    tls:
+      rejectUnauthorized: false
+    response:
+      timeout: 2000 
+
+scenarios:
+  - name: "Login + Get Orders"
+    flow:
+      - post:
+          url: "/api/v1/auth/sign-in"
+          headers:
+            Content-Type: "application/json"
+          json:
+            email: "loadtest@test.com"
+            password: "password1234"
+          capture:
+            - json: "$.data"
+              as: "token"
+              transform: "string"
+
+      - think: 0.1
+
+      - get:
+          url: "/api/v1/orders"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          timeout: 2000 
+ensure:
+  maxStepDuration: 2500   # step 전체 2.5초 넘으면 강제로 VU 종료

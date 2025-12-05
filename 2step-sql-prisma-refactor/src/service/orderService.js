@@ -9,7 +9,7 @@ class OrderService {
   async createOrder(user, data) {
     const { items, delivery, customer } = data;
     const orderItems = items;
-    let totalPrice = 0;
+    // let totalPrice = 0;
 
     if(!orderItems || orderItems.length === 0) {
       throw new AppError(
@@ -22,47 +22,50 @@ class OrderService {
     createValidation(delivery, {type: "delivery"});
     createValidation(customer, {type: "customer" })
 
-    for(const item of orderItems) {
-      const product = await productDAO.findById(prisma, item.productId);
-
-      if(!product) {
-        throw new AppError(
-          commonErrors.resourceNotFoundError,
-          "해당 상품은 없습니다.",
-          404
-        )
-      }
-
-      const option = await productOptionDAO.findById(prisma, item.productOptionId);
-
-      if(!option) {
-        throw new AppError(
-          commonErrors.resourceNotFoundError,
-          "해당 옵션은 없습니다.",
-          404
-        );
-      }
-
-      if(item.quantity < 1) {
-        throw new AppError(
-          commonErrors.inputError,
-          "주문 수량을 확인하세요.",
-          400
-        );
-      } 
-
-      if(option.stock < item.quantity) {
-        throw new AppError(
-          commonErrors.resourceNotFoundError,
-          "재고가 부족합니다.",
-          404
-        );
-      }
-
-      totalPrice += product.price*(1-product.discountRate/100)*item.quantity;
-    }
     const result = await prisma.$transaction(async(tx) => {
+      let totalPrice = 0;
       const itemDatas = [];
+      
+      for(const item of orderItems) {
+        const product = await productDAO.findById(tx, item.productId);
+  
+        if(!product) {
+          throw new AppError(
+            commonErrors.resourceNotFoundError,
+            "해당 상품은 없습니다.",
+            404
+          )
+        }
+  
+        const option = await productOptionDAO.findById(tx, item.productOptionId);
+  
+        if(!option) {
+          throw new AppError(
+            commonErrors.resourceNotFoundError,
+            "해당 옵션은 없습니다.",
+            404
+          );
+        }
+  
+        if(item.quantity < 1) {
+          throw new AppError(
+            commonErrors.inputError,
+            "주문 수량을 확인하세요.",
+            400
+          );
+        } 
+  
+        if(option.stock < item.quantity) {
+          throw new AppError(
+            commonErrors.resourceNotFoundError,
+            "재고가 부족합니다.",
+            404
+          );
+        }
+  
+        totalPrice += product.price*(1-product.discountRate/100)*item.quantity;
+      }
+
 
       const order = await orderDAO.create(tx, {
         totalPrice,

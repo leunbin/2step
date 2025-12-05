@@ -8,9 +8,11 @@ const orderController = {
   getAllOrders: async (req, res, next) => {
     try {
       const { id } = res.locals.user; //주문자  id
-      const userOrders = await orderService.getOrders(id); // id 로 주문 찾기
+      const userOrders = await orderService.getOrders(id);
+      console.log("주문 전체 GET 성공")
       res.status(200).json({ orders: userOrders });
     } catch (error) {
+      console.log(error)
       next(error);
     }
   },
@@ -41,6 +43,7 @@ const orderController = {
       const { id } = res.locals.user;// req.body를 사용하여 주문 데이터를 가져오도록
 
       const newOrder = await orderService.createOrder({userId : id , ...orderData});
+      console.log("주문생성 성공")
 
       res.status(201).json({
         message: "주문이 성공적으로 생성되었습니다.",

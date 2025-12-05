@@ -1,0 +1,39 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 20
+      arrivalRate: 3
+    
+scenarios:
+  - name: "Create Order"
+    flow:
+      - post:
+          url: "/api/v1/auth/sign-in"
+          headers:
+            Content-Type: "application/json"
+          json:
+            "email" : "loadtest@test.com"
+            "password" : "password1234"
+          capture:
+            - json: "$.data"
+              as: "token"
+              transform: "string"
+
+      - post:
+          url: "/api/v1/orders"
+          headers:
+            Authorization: "Bearer {{ token }}"
+            Content-Type: "application/json"
+          json:
+            products:
+              - "68bd3a68b263df68ba1a37ce"
+            deliverStatus: false
+            customer:
+              name: "wonhee"
+              phone: "010-2335-4447"
+              email: "wonhee@test.com"
+            delivery:
+              name: "minju"
+              phone: "010-4564-2356"
+              postcode: "98763"
+              address: "서울특별시 성동구"

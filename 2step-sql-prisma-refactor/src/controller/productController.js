@@ -39,6 +39,7 @@ const productController = {
 
       res.status(201).json(utils.buildResponse(result));
     } catch (error) {
+      console.error("[ARTILLERY ERROR][getProducts]", error);
       next(error);
     }
   },
